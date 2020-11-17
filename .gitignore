@@ -1,4 +1,4 @@
-src/main/resources/spotbugs-gradle-plugin.properties
+//src/main/resources/spotbugs-gradle-plugin.properties
 
 # Created by https://www.gitignore.io/api/linux,gradle,eclipse,windows,jetbrains,node
 # Edit at https://www.gitignore.io/?templates=linux,gradle,eclipse,windows,jetbrains,node
