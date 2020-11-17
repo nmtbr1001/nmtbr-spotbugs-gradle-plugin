@@ -10,7 +10,6 @@ pluginBundle {
         'code quality'
     ]
 }
-
 gradlePlugin {
     plugins {
         spotbugsGradleBasePlugin {
