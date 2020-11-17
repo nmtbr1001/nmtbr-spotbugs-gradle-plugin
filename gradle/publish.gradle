@@ -2,8 +2,8 @@
 // https://guides.gradle.org/publishing-plugins-to-gradle-plugin-portal/
 
 pluginBundle {
-    website = 'https://github.com/spotbugs/spotbugs-gradle-plugin'
-    vcsUrl = 'https://github.com/spotbugs/spotbugs-gradle-plugin'
+    website = 'https://github.com/nmtbr1001/nmtbr-spotbugs-gradle-plugin'
+    vcsUrl = 'https://github.com/nmtbr1001/nmtbr-spotbugs-gradle-plugin'
     tags = [
         'spotbugs',
         'static analysis',
