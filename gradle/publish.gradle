@@ -10,16 +10,17 @@ pluginBundle {
         'code quality'
     ]
 }
+
 gradlePlugin {
     plugins {
         spotbugsGradleBasePlugin {
-            id "com.github.spotbugs-base.nmtbr1001" version "4.6.0"
+            id = 'com.github.spotbugs-base.nmtbr1001'
             displayName = 'Official SpotBugs Gradle Base Plugin'
             description = 'A base Gradle plugin that runs static bytecode analysis by SpotBugs'
             implementationClass = 'com.github.spotbugs.snom.SpotBugsBasePlugin'
         }
         spotbugsGradlePlugin {
-            id = id "com.github.spotbugs.nmtbr1001" version "4.6.0"
+            id = 'com.github.spotbugs.nmtbr1001'
             displayName = 'Official SpotBugs Gradle Plugin'
             description = 'A Gradle plugin that runs static bytecode analysis by SpotBugs'
             implementationClass = 'com.github.spotbugs.snom.SpotBugsPlugin'
