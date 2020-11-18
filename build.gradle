@@ -1,9 +1,9 @@
 plugins {
     id 'groovy'
-    id 'java-gradle-plugin'
     id 'jacoco'
     id 'signing'
-    id 'com.gradle.plugin-publish' version '0.12.0'
+    id "com.gradle.plugin-publish" version "0.12.0"
+    id "java-gradle-plugin"
     id 'com.diffplug.spotless' version '5.7.0'
     id 'net.ltgt.errorprone' version '1.3.0'
     id 'se.patrikerdes.use-latest-versions' version '0.2.15'
@@ -11,10 +11,10 @@ plugins {
     id 'org.sonarqube' version '3.0'
 }
 
-version = '1.0.0'
+version = "1.2"
+group = "com.foo.myplugin"
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
-group = 'com.github.spotbugs.snom'
 
 repositories {
     // To download the Android Gradle Plugin
@@ -45,10 +45,44 @@ groovydoc {
     link 'https://docs.groovy-lang.org/latest/html/gapi/', 'groovy.', 'org.codehaus.groovy.'
 }
 
+gradlePlugin {
+  plugins {
+    spotbugsGradleBasePlugin {
+      id = 'com.github.spotbugs-base.nmtbr1001'
+      implementationClass = 'com.github.spotbugs.snom.SpotBugsBasePlugin'
+    }
+    spotbugsGradlePlugin {
+      id = 'com.github.spotbugs.nmtbr1001'
+      implementationClass ='com.github.spotbugs.snom.SpotBugsPlugin'
+    }
+  }
+}
+
+
+
+pluginBundle{
+    website = 'https://github.com/nmtbr1001/nmtbr-spotbugs-gradle-plugin'
+    vcsUrl = 'https://github.com/nmtbr1001/nmtbr-spotbugs-gradle-plugin'
+    description ="Performs quality checks on your project's Java source files using SpotBugs and generates reports from these checks"
+    tags = [
+        'spotbugs',
+        'static analysis',
+        'code quality'
+    ]
+ plugins {
+	      spotbugsGradleBasePlugin{
+            displayName = 'Official SpotBugs Gradle Base Plugin'
+        }
+        spotbugsGradlePlugin {
+            displayName = 'Official SpotBugs Gradle Plugin'
+        }
+    }
+}
+
 def signingKey = System.getenv("SIGNING_KEY")
 def signingPassword = System.getenv("SIGNING_PASSWORD")
 
-signing {
+/*signing {
     if(signingKey != null &&
     signingPassword != null &&
     !signingKey.isEmpty() &&
@@ -59,7 +93,7 @@ signing {
     else{
         logger.warn('The signing key and password are null. This can be ignored if this is a pull request.')
     }
-}
+}*/
 
 
 
@@ -75,6 +109,5 @@ apply from: "$rootDir/gradle/test.gradle"
 apply from: "$rootDir/gradle/functional-test.gradle"
 apply from: "$rootDir/gradle/spotless.gradle"
 apply from: "$rootDir/gradle/errorprone.gradle"
-apply from: "$rootDir/gradle/publish.gradle"
 
 defaultTasks 'spotlessApply', 'build'
